@@ -1,0 +1,9 @@
+C:\Projects\My Projects\BPCloud\BPCloud.VendorAPIGateWay\obj\Release\netcoreapp2.1\PubTmp\Out\appsettings.Development.json
+C:\Projects\My Projects\BPCloud\BPCloud.VendorAPIGateWay\obj\Release\netcoreapp2.1\PubTmp\Out\appsettings.json
+C:\Projects\My Projects\BPCloud\BPCloud.VendorAPIGateWay\obj\Release\netcoreapp2.1\PubTmp\Out\ocelot.json
+C:\Projects\My Projects\BPCloud\BPCloud.VendorAPIGateWay\obj\Release\netcoreapp2.1\PubTmp\Out\BPCloud.VendorAPIGateWay.dll
+C:\Projects\My Projects\BPCloud\BPCloud.VendorAPIGateWay\obj\Release\netcoreapp2.1\PubTmp\Out\BPCloud.VendorAPIGateWay.runtimeconfig.json
+C:\Projects\My Projects\BPCloud\BPCloud.VendorAPIGateWay\obj\Release\netcoreapp2.1\PubTmp\Out\BPCloud.VendorAPIGateWay.pdb
+C:\Projects\My Projects\BPCloud\BPCloud.VendorAPIGateWay\obj\Release\netcoreapp2.1\PubTmp\Out\FluentValidation.dll
+C:\Projects\My Projects\BPCloud\BPCloud.VendorAPIGateWay\obj\Release\netcoreapp2.1\PubTmp\Out\Ocelot.dll
+C:\Projects\My Projects\BPCloud\BPCloud.VendorAPIGateWay\obj\Release\netcoreapp2.1\PubTmp\Out\BPCloud.VendorAPIGateWay.deps.json
