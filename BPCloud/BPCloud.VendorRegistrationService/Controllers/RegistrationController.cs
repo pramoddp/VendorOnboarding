@@ -461,7 +461,7 @@ namespace BPCloud.VendorRegistrationService.Controllers
                 //string UserName = _ctx.TBL_User_Master.Where(x => x.Email == toEmail).Select(y => y.UserName).FirstOrDefault();
                 //UserName = string.IsNullOrEmpty(UserName) ? toEmail.Split('@')[0] : UserName;
                 //sb.Append(string.Format("Dear {0},<br/>", UserName));
-                //sb.Append("You have invited to register in our BPCloud by Emami Limited, Request you to proceed with registration");
+                //sb.Append("You have invited to register in our business process by Wipro, Request you to proceed with registration");
                 //sb.Append("<p>cccc</p>");
                 //sb.Append($"<i>Note: The verification link will expire in {30} days.<i>");
                 //sb.Append("<p>Regards,</p><p>Admin</p>");
@@ -509,7 +509,6 @@ namespace BPCloud.VendorRegistrationService.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
 
         [HttpPost]
         public async Task<IActionResult> UpdateVendorOnBoarding(BPVendorOnBoardingView VendorOnBoarding)

@@ -146,7 +146,8 @@
                       </div>
                     </div>
                     <div fxFlex="30" *ngIf="!GSTDisable">
-                      <mat-checkbox labelPosition="before" id="checkbox" [checked]="PanEnable" class="GSTCheck_Box"  (change)="GSTCheckBoxEvent($event)">
+                      <mat-checkbox labelPosition="before" id="checkbox" [checked]="PanEnable" class="GSTCheck_Box"
+                        (change)="GSTCheckBoxEvent($event)">
                         Unregistred Vendor
                       </mat-checkbox>
                     </div>
@@ -616,7 +617,61 @@
                   </div>
                 </div>
               </div>
-
+              <div fxFlex fxLayout="row" class="mt-20">
+                <div fxLayout="row wrap" fxLayoutAlign="start">
+                  <div fxFlex="100">
+                    <div class="SectionTitle mb-8">
+                      <strong>Statutory Registration Details</strong>
+                    </div>
+                  </div>
+                  <div fxFlex="15">
+                    <mat-form-field class="pl-8 pr-20" fxFlex style="margin-top: -10px;">
+                      <mat-select matNativeControl matInput placeholder="Choose the suitable"
+                        formControlName="TypeOfVendor" style="font-weight: 600;opacity: 0.8;">
+                        <mat-option *ngFor="let types of TypeOfVendors" [value]="types">{{types}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="25">
+                    <label id="example-radio-group-label" style="margin-top: 2px;">Whether Supply fall under
+                      RCM</label>
+                    <mat-radio-group class="pl-8 pr-20" fxFlex formControlName="IsSupplyTypeRCM">
+                      <mat-radio-button [value]="choice" class="mx-4" *ngFor="let choice of RadioChoices">
+                        {{choice}}</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div fxFlex="20">
+                    <label id="example-radio-group-label" style="margin-top: 2px;">ITR Filled for last 2-FY's</label>
+                    <mat-radio-group class="pl-8 pr-20" fxFlex formControlName="IsITRFiledLast2Years">
+                      <mat-radio-button [value]="choice" class="mx-4" *ngFor="let choice of RadioChoices">
+                        {{choice}}</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div fxFlex="20">
+                    <label id="example-radio-group-label" style="margin-top: 2px;">E-Invoice Applicability</label>
+                    <mat-radio-group class="pl-8 pr-20" fxFlex formControlName="IsEInvoiceApplicable">
+                      <mat-radio-button [value]="choice" class="mx-4" *ngFor="let choice of RadioChoices">
+                        {{choice}}</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div fxFlex="20">
+                    <label id="example-radio-group-label" style="margin-top: 2px;">Status under MSME Act.</label>
+                    <mat-radio-group class="pl-8 pr-20" fxFlex formControlName="IsStatusUnderMSMEAct">
+                      <mat-radio-button [value]="choice" class="mx-4" *ngFor="let choice of RadioChoices">
+                        {{choice}}</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div fxFlex="30">
+                    <mat-form-field class="pl-8 pr-20" fxFlex style="margin-top: -10px;">
+                      <mat-select matNativeControl matInput placeholder="Nature of Transaction with WIPRO"
+                        formControlName="TypeOfTransactionWithWipro" style="font-weight: 600;opacity: 0.8;">
+                        <mat-option *ngFor="let types of TypesOfTransactionWithWipro" [value]="types">{{types}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
             </form>
 
             <!-- Identification Table -->
@@ -997,7 +1052,8 @@
                       (click)="BankRowClicked(row,i)" style=" cursor: pointer;">
                     </tr>
                   </table>
-                  <div flex fxLayoutAlign="center center" style="margin-top: 20px;" class="TableFooter" *ngIf="!BanksByVOB?.length">
+                  <div flex fxLayoutAlign="center center" style="margin-top: 20px;" class="TableFooter"
+                    *ngIf="!BanksByVOB?.length">
                     <mat-icon svgIcon="infoIcon" style="color: #1b56ca;">
                     </mat-icon>
                     <span style="margin-left: 10px;">The table does not contain any records</span>
@@ -1109,7 +1165,7 @@
 
                 <!-- Contact Table -->
                 <div style="overflow-x: auto;">
-                  <table  class="table" mat-table [dataSource]="contactDataSource" matSort>
+                  <table class="table" mat-table [dataSource]="contactDataSource" matSort>
 
                     <ng-container matColumnDef="firstcolumn">
                       <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 3%;"> </th>
@@ -1162,7 +1218,8 @@
                       (click)="ContactPersonsClicked(row,i)" style=" cursor: pointer;">
                     </tr>
                   </table>
-                  <div flex fxLayoutAlign="center center" class="TableFooter" style="margin-top: 20px;" *ngIf="!ContactsByVOB?.length">
+                  <div flex fxLayoutAlign="center center" class="TableFooter" style="margin-top: 20px;"
+                    *ngIf="!ContactsByVOB?.length">
                     <mat-icon svgIcon="infoIcon" style="color: #1b56ca;">
                     </mat-icon>
                     <span style="margin-left: 10px;">The table does not contain any records</span>
@@ -1171,7 +1228,7 @@
               </div>
             </div>
 
-            
+
             <!-- <div fxFlex fxLayout="column" style="margin-top: 30px;">
               <div style="margin-left: 7px">
                 <div class="SectionTitle">

@@ -21,6 +21,13 @@ export class BPVendorOnBoarding extends CommonClass {
     PinCode: string;
     Type: string;
     TypeofIndustry:string;
+    TypeOfVendor:string;
+    TypeOfTransactionWithWipro:string;
+    UdyamCertificateNo:string;
+    IsSupplyTypeRCM:boolean;
+    IsITRFiledLast2Years:boolean;
+    IsEInvoiceApplicable:boolean;
+    IsStatusUnderMSMEAct:boolean;
     Token: string;
     Plant:string;
     Phone1: string;
@@ -124,6 +131,13 @@ export class BPVendorOnBoardingView extends CommonClass {
     Department:string;
     MSME_TYPE:string;
     TypeofIndustry:string;
+    TypeOfVendor:string;
+    TypeOfTransactionWithWipro:string;
+    UdyamCertificateNo:string;
+    IsSupplyTypeRCM:boolean;
+    IsITRFiledLast2Years:boolean;
+    IsEInvoiceApplicable:boolean;
+    IsStatusUnderMSMEAct:boolean;
     EmamiContactPerson:string;
     EmamiContactPersonMail:string;
     Type: string;

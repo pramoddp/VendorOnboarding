@@ -1629,7 +1629,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
         //        //string UserName = _ctx.TBL_User_Master.Where(x => x.Email == toEmail).Select(y => y.UserName).FirstOrDefault();
         //        //UserName = string.IsNullOrEmpty(UserName) ? toEmail.Split('@')[0] : UserName;
         //        sb.Append(string.Format("Dear {0},<br/>", UserName));
-        //        sb.Append("You have invited to register in our BPCloud by Emami Limited, Request you to proceed with registration");
+        //        sb.Append("You have invited to register in our business process by Wipro, Request you to proceed with registration");
         //        sb.Append("<p><a href=\"" + siteURL + "/#/register/vendor?token=" + code + "&Id=" + TransID + "&Email=" + toEmail + "\"" + ">Register</a></p>");
         //        sb.Append($"<i>Note: The verification link will expire in {_tokenTimespan} days.<i>");
         //        sb.Append("<p>Regards,</p><p>Admin</p>");
@@ -1681,7 +1681,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
         //    }
         //}
 
-        //Emami SMTP
+        //Wipro SMTP
         public async Task<bool> SendMail(string code, string UserName, string toEmail, string TransID, string siteURL)
         {
             try
@@ -1696,16 +1696,16 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 StringBuilder sb = new StringBuilder();
                 UserName = string.IsNullOrEmpty(UserName) ? toEmail.Split('@')[0] : UserName;
               
-                sb.Append(@"<html><head></head><body> <div style='border:1px solid #dbdbdb;'> <div style='padding: 20px 20px; background-color: #fff06769;text-align: center;font-family: Segoe UI;'> <p> <h2>Emami Vendor Onboarding</h2> </p> </div> <div style='background-color: #f8f7f7;padding: 20px 20px;font-family: Segoe UI'> <div style='padding: 20px 20px;border:1px solid white;background-color: white !important'> <p>Dear concern,</p> <p>You have invited to register in our BPCloud by Emami Limited, Request you to proceed with registration.</p> <div style='text-align: end;'>" + "<a href=\"" + siteURL + "/#/register/vendor?token=" + code + "&Id=" + TransID + "&Email=" + toEmail + "\"" + "><button style='width: 90px;height: 28px; background-color: #039be5;color: white'>Register</button></a></div> <p>Note: The verification link will expire in " + _tokenTimespan + " days.</p> <p>Regards,</p> <p>Admin</p> </div> </div> </div></body></html>");
+                sb.Append(@"<html><head></head><body> <div style='border:1px solid #dbdbdb;'> <div style='padding: 20px 20px; background-color: #fff06769;text-align: center;font-family: Segoe UI;'> <p> <h2>Wipro Vendor Onboarding</h2> </p> </div> <div style='background-color: #f8f7f7;padding: 20px 20px;font-family: Segoe UI'> <div style='padding: 20px 20px;border:1px solid white;background-color: white !important'> <p>Dear concern,</p> <p>You have invited to register in our business process by Wipro, Request you to proceed with registration.</p> <div style='text-align: end;'>" + "<a href=\"" + siteURL + "/#/register/vendor?token=" + code + "&Id=" + TransID + "&Email=" + toEmail + "\"" + "><button style='width: 90px;height: 28px; background-color: #039be5;color: white'>Register</button></a></div> <p>Note: The verification link will expire in " + _tokenTimespan + " days.</p> <p>Regards,</p> <p>Admin</p> </div> </div> </div></body></html>");
                 //sb.Append(string.Format("Dear {0},<br/>", UserName));
-                //sb.Append("You have invited to register in our BPCloud by Emami Limited, Request you to proceed with registration");
+                //sb.Append("You have invited to register in our business process by Wipro, Request you to proceed with registration");
                 //sb.Append("<p><a href=\"" + siteURL + "/#/register/vendor?token=" + code + "&Id=" + TransID + "&Email=" + toEmail + "\"" + ">Register</a></p>");
                 //sb.Append($"<i>Note: The verification link will expire in {_tokenTimespan} days.<i>");
                 //sb.Append("<p>Regards,</p><p>Admin</p>");
 
-                //sb.Append(@"<html><head></head><body><div style='border:1px solid #dbdbdb;'><div style='padding: 20px 20px; background-color: #fff06769;text-align: center;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;'><p><h2>Emami Vendor Onboadring</h2></p></div><div style='background-color: #f8f7f7;padding: 20px 20px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;'><div style='padding: 20px 20px;border:1px solid white;background-color: white !important;'><p>Dear concern</p><p>You have invited to register in our BPCloud by Emami Limited, Request you to proceed with registration</p><div style='text-align: end;'>" + "<a href =\"" + siteURL + "/#/register/vendor?token=" + code + "&Id=" + TransID + "&Email=" + toEmail + "\"" + "><button style='width: 90px;height: 28px;backgroud-color:red;background-color: #008CBA;color: white'>Register</button></a>" + "</div></div></div></div></body></html>");
+                //sb.Append(@"<html><head></head><body><div style='border:1px solid #dbdbdb;'><div style='padding: 20px 20px; background-color: #fff06769;text-align: center;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;'><p><h2>Wipro Vendor Onboadring</h2></p></div><div style='background-color: #f8f7f7;padding: 20px 20px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;'><div style='padding: 20px 20px;border:1px solid white;background-color: white !important;'><p>Dear concern</p><p>You have invited to register in our business process by Wipro, Request you to proceed with registration</p><div style='text-align: end;'>" + "<a href =\"" + siteURL + "/#/register/vendor?token=" + code + "&Id=" + TransID + "&Email=" + toEmail + "\"" + "><button style='width: 90px;height: 28px;backgroud-color:red;background-color: #008CBA;color: white'>Register</button></a>" + "</div></div></div></div></body></html>");
 
-                //sb.Append(@"<html><head></head><body> <div style='border:1px solid #dbdbdb;'> <div style='padding: 20px 20px; background-color: #fff06769;text-align: center;font-family: Segoe UI;'> <p> <h2>Emami Vendor Onboadring</h2> </p> </div> <div style='background-color: #f8f7f7;padding: 20px 20px;font-family: Segoe UI'> <div style='padding: 20px 20px;border:1px solid white;background-color: white !important'> <p>Dear concern,</p> <p>You have invited to register in our BPCloud by Emami Limited, Request you to proceed with registration.</p> <div style='text-align: end;'>" + "<a href=\"" + siteURL + "/#/register/vendor?token=" + code + "&Id=" + TransID + "&Email=" + toEmail + "\"" + "><button style='width: 90px;height: 28px; background-color: #039be5;color: white'>Register</button> </div> <p>Note: The verification link will expire in " + _tokenTimespan + " days.</p> <p>Regards,</p> <p>Admin</p> </div> </div> </div></body></html>");
+                //sb.Append(@"<html><head></head><body> <div style='border:1px solid #dbdbdb;'> <div style='padding: 20px 20px; background-color: #fff06769;text-align: center;font-family: Segoe UI;'> <p> <h2>Wipro Vendor Onboadring</h2> </p> </div> <div style='background-color: #f8f7f7;padding: 20px 20px;font-family: Segoe UI'> <div style='padding: 20px 20px;border:1px solid white;background-color: white !important'> <p>Dear concern,</p> <p>You have invited to register in our business process by Wipro, Request you to proceed with registration.</p> <div style='text-align: end;'>" + "<a href=\"" + siteURL + "/#/register/vendor?token=" + code + "&Id=" + TransID + "&Email=" + toEmail + "\"" + "><button style='width: 90px;height: 28px; background-color: #039be5;color: white'>Register</button> </div> <p>Note: The verification link will expire in " + _tokenTimespan + " days.</p> <p>Regards,</p> <p>Admin</p> </div> </div> </div></body></html>");
                 subject = "Vendor Registration Initialization";
                 SmtpClient client = new SmtpClient();
                 client.Port = Convert.ToInt32(SMTPPort);
@@ -1768,7 +1768,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 string hostName = STMPDetailsConfig["Host"];
                 string SMTPEmail = STMPDetailsConfig["Email"];
                 string siteURL = _configuration["PortalAddress"];
-                //string SMTPEmailPassword = STMPDetailsConfig["Password"];
+                string SMTPEmailPassword = STMPDetailsConfig["Password"];
                 string SMTPPort = STMPDetailsConfig["Port"];
                 var message = new MailMessage();
                 string subject = "";
@@ -1788,8 +1788,8 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 client.EnableSsl = false;
                 client.Timeout = 60000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                //client.UseDefaultCredentials = false;
-                //client.Credentials = new System.Net.NetworkCredential(SMTPEmail.Trim(), SMTPEmailPassword.Trim());
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential(SMTPEmail, SMTPEmailPassword);
                 //client.Credentials = new System.Net.NetworkCredential(SMTPEmail.Trim(), SMTPEmailPassword.Trim());
                 MailMessage reportEmail = new MailMessage(SMTPEmail, toEmail, subject, sb.ToString());
                 reportEmail.BodyEncoding = UTF8Encoding.UTF8;
@@ -1817,7 +1817,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 string hostName = STMPDetailsConfig["Host"];
                 string SMTPEmail = STMPDetailsConfig["Email"];
                 string siteURL = _configuration["PortalAddress"];
-                //string SMTPEmailPassword = STMPDetailsConfig["Password"];
+                string SMTPEmailPassword = STMPDetailsConfig["Password"];
                 string SMTPPort = STMPDetailsConfig["Port"];
                 var message = new MailMessage();
                 string subject = "";
@@ -1837,8 +1837,8 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 client.EnableSsl = false;
                 client.Timeout = 60000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                //client.UseDefaultCredentials = false;
-                //client.Credentials = new System.Net.NetworkCredential(SMTPEmail.Trim(), SMTPEmailPassword.Trim());
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential(SMTPEmail, SMTPEmailPassword);
                 MailMessage reportEmail = new MailMessage(SMTPEmail, toEmail, subject, sb.ToString());
                 reportEmail.BodyEncoding = UTF8Encoding.UTF8;
                 reportEmail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
@@ -1866,7 +1866,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 string hostName = STMPDetailsConfig["Host"];
                 string SMTPEmail = STMPDetailsConfig["Email"];
                 string siteURL = _configuration["PortalAddress"];
-                //string SMTPEmailPassword = STMPDetailsConfig["Password"];
+                string SMTPEmailPassword = STMPDetailsConfig["Password"];
                 string SMTPPort = STMPDetailsConfig["Port"];
                 var message = new MailMessage();
                 string subject = "";
@@ -1887,8 +1887,8 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 client.EnableSsl = false;
                 client.Timeout = 60000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                //client.UseDefaultCredentials = false;
-                //client.Credentials = new System.Net.NetworkCredential(SMTPEmail.Trim(), SMTPEmailPassword.Trim());
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential(SMTPEmail, SMTPEmailPassword);
                 MailMessage reportEmail = new MailMessage(SMTPEmail, toEmail, subject, sb.ToString());
                 reportEmail.BodyEncoding = UTF8Encoding.UTF8;
                 reportEmail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;

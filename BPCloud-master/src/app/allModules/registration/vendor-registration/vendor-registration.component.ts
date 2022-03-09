@@ -158,6 +158,9 @@ export class VendorRegistrationComponent implements OnInit {
   AllIdentityTypes: any[] = [];
   AllRoles: string[] = [];
   TypeofIndustryTypes: any[] = [];
+  TypeOfVendors: any[] = [];
+  TypesOfTransactionWithWipro: any[] = [];
+  RadioChoices: any[] = [];
   AllCountries: any[] = [];
   lanline: any[] = []
   pincode: any[] = []
@@ -266,6 +269,26 @@ export class VendorRegistrationComponent implements OnInit {
       "Manufacturing",
       "Services",
       "Trading"
+    ];
+
+    this.TypeOfVendors = [
+      "Regular",
+      "Composition Dealer",
+      "Un Registered"
+    ];
+
+    this.TypesOfTransactionWithWipro = [
+      "Raw/Packing Material Supplier",
+      "Transporter",
+      "Government/Govt. Agencies",
+      "CHA,Tax Consultant",
+      "Service Provider",
+      "Legal"
+    ];
+
+    this.RadioChoices = [
+      "Yes",
+      "No"
     ];
 
     this.Country = "India"
@@ -750,6 +773,13 @@ export class VendorRegistrationComponent implements OnInit {
       AddressLine1: ['', Validators.required],
       MSMEType: ['Not Applicable', Validators.required],
       TypeOfIndustry: [''],
+      TypeOfVendor: [''],
+      TypeOfTransactionWithWipro: [''],
+      // UdyamCertificateNo: [''],
+      IsSupplyTypeRCM: [''],
+      IsITRFiledLast2Years: [''],
+      IsEInvoiceApplicable: [''],
+      IsStatusUnderMSMEAct: [''],
       AddressLine2: ['', Validators.required],
       City: ['', Validators.required],
       State: ['', Validators.required],
@@ -2611,6 +2641,13 @@ export class VendorRegistrationComponent implements OnInit {
       this.SelectedBPVendorOnBoarding.GSTStatus = this.SelectedBPVendorOnBoardingView.GSTStatus = "true";
     }
     this.SelectedBPVendorOnBoardingView.TypeofIndustry = this.SelectedBPVendorOnBoarding.TypeofIndustry = this.vendorRegistrationFormGroup.get('TypeOfIndustry').value;
+    this.SelectedBPVendorOnBoardingView.TypeOfVendor = this.SelectedBPVendorOnBoarding.TypeOfVendor = this.vendorRegistrationFormGroup.get('TypeOfVendor').value;
+    this.SelectedBPVendorOnBoardingView.TypeOfTransactionWithWipro = this.SelectedBPVendorOnBoarding.TypeOfTransactionWithWipro = this.vendorRegistrationFormGroup.get('TypeOfTransactionWithWipro').value;
+    // this.SelectedBPVendorOnBoardingView.UdyamCertificateNo = this.SelectedBPVendorOnBoarding.UdyamCertificateNo = this.vendorRegistrationFormGroup.get('UdyamCertificateNo').value;
+    this.SelectedBPVendorOnBoardingView.IsSupplyTypeRCM = this.SelectedBPVendorOnBoarding.IsSupplyTypeRCM = this.vendorRegistrationFormGroup.get('IsSupplyTypeRCM').value;
+    this.SelectedBPVendorOnBoardingView.IsITRFiledLast2Years = this.SelectedBPVendorOnBoarding.IsITRFiledLast2Years = this.vendorRegistrationFormGroup.get('IsITRFiledLast2Years').value;
+    this.SelectedBPVendorOnBoardingView.IsEInvoiceApplicable = this.SelectedBPVendorOnBoarding.IsEInvoiceApplicable = this.vendorRegistrationFormGroup.get('IsEInvoiceApplicable').value;
+    this.SelectedBPVendorOnBoardingView.IsStatusUnderMSMEAct = this.SelectedBPVendorOnBoarding.IsStatusUnderMSMEAct = this.vendorRegistrationFormGroup.get('IsStatusUnderMSMEAct').value;
     this.SelectedBPVendorOnBoarding.AccountGroup = this.SelectedBPVendorOnBoardingView.AccountGroup = this.BPVendorOnBoarding.AccountGroup;
     this.SelectedBPVendorOnBoarding.Department = this.SelectedBPVendorOnBoardingView.Department = this.BPVendorOnBoarding.Department;
     this.SelectedBPVendorOnBoarding.PurchaseOrg = this.SelectedBPVendorOnBoardingView.PurchaseOrg = this.BPVendorOnBoarding.PurchaseOrg;
