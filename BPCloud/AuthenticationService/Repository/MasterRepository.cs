@@ -1006,7 +1006,7 @@ namespace AuthenticationService.Repository
                 SmtpClient client = new SmtpClient();
                 client.Port = Convert.ToInt32(SMTPPort);
                 client.Host = hostName;
-                client.EnableSsl = false;
+                client.EnableSsl = true;
                 client.Timeout = 60000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
@@ -1763,7 +1763,7 @@ namespace AuthenticationService.Repository
                 SmtpClient client = new SmtpClient();
                 client.Port = Convert.ToInt32(SMTPPort);
                 client.Host = hostName;
-                client.EnableSsl = false;
+                client.EnableSsl = true;
                 client.Timeout = 60000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;

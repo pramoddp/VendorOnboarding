@@ -1404,7 +1404,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 entity.ModifiedBy = VendorOnBoarding.ModifiedBy;
                 entity.ModifiedOn = DateTime.Now;
                 await _dbContext.SaveChangesAsync();
-                //await SendMailToApprovalVendor(entity.Email1, entity.Phone1);
+                await SendMailToApprovalVendor(entity.Email1, entity.Phone1);
                 return entity;
             }
             catch (Exception ex)
@@ -1412,6 +1412,32 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 throw ex;
             }
         }
+
+        public async Task<BPVendorOnBoarding> RejectVendor(BPVendorOnBoarding VendorOnBoarding)
+        {
+            try
+            {
+                var entity = _dbContext.Set<BPVendorOnBoarding>().FirstOrDefault(x => x.TransID == VendorOnBoarding.TransID);
+                if (entity == null)
+                {
+                    return entity;
+                }
+                entity.Status = "Rejected";
+                entity.ModifiedBy = VendorOnBoarding.ModifiedBy;
+                entity.ModifiedOn = DateTime.Now;
+
+                entity.Remarks = VendorOnBoarding.Remarks;
+                var Remark = VendorOnBoarding.Remarks;
+                await _dbContext.SaveChangesAsync();
+                await SendMailToRejectVendor(entity.Email1, entity.Phone1, Remark);
+                return VendorOnBoarding;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<BPVendorOnBoarding> GetDeclarationID(int TransID)
         {
             var result = (from tb in _dbContext.BPVendorOnBoardings
@@ -1424,6 +1450,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                           }).ToList();
             return result;
         }
+
         public BPVendorOnBoarding GetAttachmentId(string arg1)
         {
             //_dbContext.Set<BPVendorOnBoarding>().FirstOrDefault(x => x.TransID == VendorOnBoarding.TransID);
@@ -1435,6 +1462,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                           }).FirstOrDefault();
             return result;
         }
+
         public BPAttachment GetBPAttachmentByAttachmentId(int attachAttachmentId)
         {
             try
@@ -1447,6 +1475,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 throw ex;
             }
         }
+
         public async Task DeleteVendorOnboardingById(string Transid)
         {
             try
@@ -1484,6 +1513,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 throw ex;
             }
         }
+
         public List<BPVendorOnBoarding> GetDeclaration_toogle(int TransID)
         {
             var result = (from tb in _dbContext.BPVendorOnBoardings
@@ -1516,38 +1546,6 @@ namespace BPCloud.VendorRegistrationService.Repositories
         //    {
         //        throw ex;
         //    }
-        //}
-
-        public async Task<BPVendorOnBoarding> RejectVendor(BPVendorOnBoarding VendorOnBoarding)
-        {
-            try
-            {
-                var entity = _dbContext.Set<BPVendorOnBoarding>().FirstOrDefault(x => x.TransID == VendorOnBoarding.TransID);
-                if (entity == null)
-                {
-                    return entity;
-                }
-                entity.Status = "Rejected";
-                entity.ModifiedBy = VendorOnBoarding.ModifiedBy;
-                entity.ModifiedOn = DateTime.Now;
-
-                entity.Remarks = VendorOnBoarding.Remarks;
-                var Remark = VendorOnBoarding.Remarks;
-                await _dbContext.SaveChangesAsync();
-                await SendMailToRejectVendor(entity.Email1, entity.Phone1, Remark);
-                return VendorOnBoarding;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-
-        //private Task SendMailToRejectVendor(object email, object phone)
-        //{
-        //    throw new NotImplementedException();
         //}
 
         #region Question 
@@ -1679,9 +1677,10 @@ namespace BPCloud.VendorRegistrationService.Repositories
         //        WriteLog.WriteToFile("VendorOnBoardingRepository/SendMail/Exception:- " + ex.Message, ex);
         //        return false;
         //    }
+        //    }
         //}
 
-        //Wipro SMTP
+        #region SMTP(Wipro)
         public async Task<bool> SendMail(string code, string UserName, string toEmail, string TransID, string siteURL)
         {
             try
@@ -1695,7 +1694,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 string subject = "";
                 StringBuilder sb = new StringBuilder();
                 UserName = string.IsNullOrEmpty(UserName) ? toEmail.Split('@')[0] : UserName;
-              
+
                 sb.Append(@"<html><head></head><body> <div style='border:1px solid #dbdbdb;'> <div style='padding: 20px 20px; background-color: #fff06769;text-align: center;font-family: Segoe UI;'> <p> <h2>Wipro Vendor Onboarding</h2> </p> </div> <div style='background-color: #f8f7f7;padding: 20px 20px;font-family: Segoe UI'> <div style='padding: 20px 20px;border:1px solid white;background-color: white !important'> <p>Dear concern,</p> <p>You have invited to register in our business process by Wipro, Request you to proceed with registration.</p> <div style='text-align: end;'>" + "<a href=\"" + siteURL + "/#/register/vendor?token=" + code + "&Id=" + TransID + "&Email=" + toEmail + "\"" + "><button style='width: 90px;height: 28px; background-color: #039be5;color: white'>Register</button></a></div> <p>Note: The verification link will expire in " + _tokenTimespan + " days.</p> <p>Regards,</p> <p>Admin</p> </div> </div> </div></body></html>");
                 //sb.Append(string.Format("Dear {0},<br/>", UserName));
                 //sb.Append("You have invited to register in our business process by Wipro, Request you to proceed with registration");
@@ -1781,11 +1780,11 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 sb.Append(string.Format("<p>User name: {0}</p>", toEmail));
                 sb.Append(string.Format("<p>Password: {0}</p>", password));
                 sb.Append("<p>Regards,</p><p>Admin</p>");
-                subject = "BP Cloud Vendor Registration";
+                subject = "Business Process Vendor Registration";
                 SmtpClient client = new SmtpClient();
                 client.Port = Convert.ToInt32(SMTPPort);
                 client.Host = hostName;
-                client.EnableSsl = false;
+                client.EnableSsl = true;
                 client.Timeout = 60000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
@@ -1804,6 +1803,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 throw ex;
             }
         }
+
         public async Task<bool> SendMailToApprovalVendor(string toEmail, string password)
         {
             try
@@ -1825,16 +1825,16 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 //string UserName = _dbContext.TBL_User_Master.Where(x => x.Email == toEmail).Select(y => y.UserName).FirstOrDefault();
                 //UserName = string.IsNullOrEmpty(UserName) ? toEmail.Split('@')[0] : UserName;
                 sb.Append(string.Format("Dear {0},<br/>", toEmail));
-                sb.Append("<p>Vendor Registred.</p>");
+                sb.Append("<p>Vendor Registered.</p>");
                 //sb.Append("<p>Please Login by clicking <a href=\"" + siteURL + "/#/auth/login\">here</a></p>");
                 //sb.Append(string.Format("<p>User name: {0}</p>", toEmail));
                 //sb.Append(string.Format("<p>Password: {0}</p>", password));
                 sb.Append("<p>Regards,</p><p>Admin</p>");
-                subject = "BP Cloud Vendor Registration";
+                subject = "Business Process Vendor Registration";
                 SmtpClient client = new SmtpClient();
                 client.Port = Convert.ToInt32(SMTPPort);
                 client.Host = hostName;
-                client.EnableSsl = false;
+                client.EnableSsl = true;
                 client.Timeout = 60000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
@@ -1880,11 +1880,11 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 //sb.Append(string.Format("<p>User name: {0}</p>", toEmail));
                 //sb.Append(string.Format("<p>Password: {0}</p>", password));
                 sb.Append("<p>Regards,</p><p>Admin</p>");
-                subject = "BP Cloud Vendor Registration";
+                subject = "Business Process Vendor Registration";
                 SmtpClient client = new SmtpClient();
                 client.Port = Convert.ToInt32(SMTPPort);
                 client.Host = hostName;
-                client.EnableSsl = false;
+                client.EnableSsl = true;
                 client.Timeout = 60000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
@@ -1902,6 +1902,7 @@ namespace BPCloud.VendorRegistrationService.Repositories
                 throw ex;
             }
         }
+        #endregion
 
         private class ErrorLog
         {
