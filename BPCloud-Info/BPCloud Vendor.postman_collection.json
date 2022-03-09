@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "8bd41c69-50b9-4ca3-8c55-432e6d953f86",
+		"name": "BPCloud Vendor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:7003/api/Registration/InitializeVendorRegistration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\":\"Chand\",\r\n    \"Plant\":\"9999\",\r\n    \"GSTNumber\":\"05AAACG2140A1ZL\",\r\n    \"Email\":\"dppramod3@gmail.com\",\r\n    \"Type\":\"01\",\r\n    \"AccountGroup\":\"123\",\r\n    \"PurchaseOrg\":\"100\",\r\n    \"Department\":\"001\",\r\n    \"CompanyCode\":\"123\",\r\n    \"EmamiContactPerson\":\"Chand\",\r\n    \"EmamiContactPersonMail\":\"iteosin@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.2.6:9000/v4/api/Registration/InitializeVendorRegistration",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"2",
+						"6"
+					],
+					"port": "9000",
+					"path": [
+						"v4",
+						"api",
+						"Registration",
+						"InitializeVendorRegistration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://192.168.2.6:9000/v3/api/Master/SearchTaxPayer?GSTNumber=05AAACG2140A1ZL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.2.6:9000/v3/api/Master/SearchTaxPayer?GSTNumber=05AAACG2140A1ZL",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"2",
+						"6"
+					],
+					"port": "9000",
+					"path": [
+						"v3",
+						"api",
+						"Master",
+						"SearchTaxPayer"
+					],
+					"query": [
+						{
+							"key": "GSTNumber",
+							"value": "05AAACG2140A1ZL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://192.168.2.6:9000/vendormasterapi/Master/SearchTaxPayer?GSTNumber=05AAACG2140A1ZL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.2.6:9000/vendormasterapi/Master/SearchTaxPayer?GSTNumber=05AAACG2140A1ZL",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"2",
+						"6"
+					],
+					"port": "9000",
+					"path": [
+						"vendormasterapi",
+						"Master",
+						"SearchTaxPayer"
+					],
+					"query": [
+						{
+							"key": "GSTNumber",
+							"value": "05AAACG2140A1ZL"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://192.168.2.6:9000/vendormasterapi/Master/GetAllIdentities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.2.6:9000/vendormasterapi/Master/GetAllIdentities",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"2",
+						"6"
+					],
+					"port": "9000",
+					"path": [
+						"vendormasterapi",
+						"Master",
+						"GetAllIdentities"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
