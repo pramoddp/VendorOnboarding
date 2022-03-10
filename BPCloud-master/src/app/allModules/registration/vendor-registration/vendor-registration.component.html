@@ -633,7 +633,7 @@
                     </mat-form-field>
                   </div>
                   <div fxFlex="25">
-                    <label id="example-radio-group-label" style="margin-top: 2px;">Whether Supply fall under
+                    <label id="example-radio-group-label" style="margin-top: 2px; color: #757575;">Whether Supply fall under
                       RCM</label>
                     <mat-radio-group class="pl-8 pr-20" fxFlex formControlName="IsSupplyTypeRCM">
                       <mat-radio-button [value]="choice" class="mx-4" *ngFor="let choice of RadioChoices">
@@ -641,25 +641,31 @@
                     </mat-radio-group>
                   </div>
                   <div fxFlex="20">
-                    <label id="example-radio-group-label" style="margin-top: 2px;">ITR Filled for last 2-FY's</label>
+                    <label id="example-radio-group-label" style="margin-top: 2px; color: #757575;">ITR Filled for last 2-FY's</label>
                     <mat-radio-group class="pl-8 pr-20" fxFlex formControlName="IsITRFiledLast2Years">
                       <mat-radio-button [value]="choice" class="mx-4" *ngFor="let choice of RadioChoices">
                         {{choice}}</mat-radio-button>
                     </mat-radio-group>
                   </div>
                   <div fxFlex="20">
-                    <label id="example-radio-group-label" style="margin-top: 2px;">E-Invoice Applicability</label>
+                    <label id="example-radio-group-label" style="margin-top: 2px; color: #757575;">E-Invoice Applicability</label>
                     <mat-radio-group class="pl-8 pr-20" fxFlex formControlName="IsEInvoiceApplicable">
                       <mat-radio-button [value]="choice" class="mx-4" *ngFor="let choice of RadioChoices">
                         {{choice}}</mat-radio-button>
                     </mat-radio-group>
                   </div>
                   <div fxFlex="20">
-                    <label id="example-radio-group-label" style="margin-top: 2px;">Status under MSME Act.</label>
+                    <label id="example-radio-group-label" style="margin-top: 2px; color: #757575; ">Status under MSME Act.</label>
                     <mat-radio-group class="pl-8 pr-20" fxFlex formControlName="IsStatusUnderMSMEAct">
                       <mat-radio-button [value]="choice" class="mx-4" *ngFor="let choice of RadioChoices">
                         {{choice}}</mat-radio-button>
                     </mat-radio-group>
+                  </div>
+                  <div fxFlex="20">
+                    <mat-form-field class="pl-8 pr-20" fxFlex style="margin-top: -10px;">
+                      <input matInput placeholder="Udyam Certificate No" formControlName="UdyamCertificateNo"
+                        style="font-weight: 600;opacity: 0.8;">
+                    </mat-form-field>
                   </div>
                   <div fxFlex="30">
                     <mat-form-field class="pl-8 pr-20" fxFlex style="margin-top: -10px;">

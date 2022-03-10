@@ -775,7 +775,7 @@ export class VendorRegistrationComponent implements OnInit {
       TypeOfIndustry: [''],
       TypeOfVendor: [''],
       TypeOfTransactionWithWipro: [''],
-      // UdyamCertificateNo: [''],
+      UdyamCertificateNo: [''],
       IsSupplyTypeRCM: [''],
       IsITRFiledLast2Years: [''],
       IsEInvoiceApplicable: [''],
@@ -2643,7 +2643,7 @@ export class VendorRegistrationComponent implements OnInit {
     this.SelectedBPVendorOnBoardingView.TypeofIndustry = this.SelectedBPVendorOnBoarding.TypeofIndustry = this.vendorRegistrationFormGroup.get('TypeOfIndustry').value;
     this.SelectedBPVendorOnBoardingView.TypeOfVendor = this.SelectedBPVendorOnBoarding.TypeOfVendor = this.vendorRegistrationFormGroup.get('TypeOfVendor').value;
     this.SelectedBPVendorOnBoardingView.TypeOfTransactionWithWipro = this.SelectedBPVendorOnBoarding.TypeOfTransactionWithWipro = this.vendorRegistrationFormGroup.get('TypeOfTransactionWithWipro').value;
-    // this.SelectedBPVendorOnBoardingView.UdyamCertificateNo = this.SelectedBPVendorOnBoarding.UdyamCertificateNo = this.vendorRegistrationFormGroup.get('UdyamCertificateNo').value;
+    this.SelectedBPVendorOnBoardingView.UdyamCertificateNo = this.SelectedBPVendorOnBoarding.UdyamCertificateNo = this.vendorRegistrationFormGroup.get('UdyamCertificateNo').value;
     this.SelectedBPVendorOnBoardingView.IsSupplyTypeRCM = this.SelectedBPVendorOnBoarding.IsSupplyTypeRCM = this.vendorRegistrationFormGroup.get('IsSupplyTypeRCM').value;
     this.SelectedBPVendorOnBoardingView.IsITRFiledLast2Years = this.SelectedBPVendorOnBoarding.IsITRFiledLast2Years = this.vendorRegistrationFormGroup.get('IsITRFiledLast2Years').value;
     this.SelectedBPVendorOnBoardingView.IsEInvoiceApplicable = this.SelectedBPVendorOnBoarding.IsEInvoiceApplicable = this.vendorRegistrationFormGroup.get('IsEInvoiceApplicable').value;
