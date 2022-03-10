@@ -557,6 +557,12 @@
     margin-top: 15px;
     margin-left: 10px;
   }
+  .mat-radio-inner-circle{
+    background-color: #074da2 !important;
+  }
+  .mat-radio-checked .mat-radio-outer-circle{
+    border-color: #074da2 !important;
+  }
   .TableFooter{
     margin-top: 0px !important;
     border: 1px solid #e3dbdb;
